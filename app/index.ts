@@ -1,18 +1,20 @@
 // Imports
-import express, { Request, Response, NextFunction } from 'express';
-import TaskRouter from './routers/task';
+import express, { Request, Response, NextFunction } from "express";
+import TaskRouter from "./routers/task";
+import TrackerRouter from "./routers/tracker";
 
 // Initialize
 const app = express();
 const port = 8800;
 
-// Health Check
-app.get('/ping', (req: Request, res: Response, next: NextFunction) => {
-    res.send('PONG at ' + new Date());
+// Ping
+app.get("/ping", (req: Request, res: Response, next: NextFunction) => {
+  res.send("PONG at " + new Date());
 });
 
-// Tasks Routes
-app.use('/task', TaskRouter);
+// Routes
+app.use("/task", TaskRouter);
+app.use("/tracker", TrackerRouter);
 
 // Launch Server
 app.listen(port, () => {

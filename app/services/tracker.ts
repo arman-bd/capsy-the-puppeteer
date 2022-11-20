@@ -6,7 +6,7 @@ export default class TrackerService {
    * @param id: string - ID of Container
    * @returns HTML of Container Details
    * @example
-   * const html = await new TrackerService().track_caru("CARU1234567");
+   * const html = await new TrackerService().track_caru("WSCU5700298");
    */
   public async track_caru(id: string): Promise<string> {
     // Launch Puppeteer
@@ -29,8 +29,8 @@ export default class TrackerService {
     // Fill in Captcha [ g-recaptcha-response ]
     await page.type("#g-recaptcha-response", captcha);
 
-    // Click Input with Type Submit
-    await page.click('input[type="submit"]');
+    // Click Input with Type Submit with Value Continue
+    await page.click("input[type=submit][value=Continue]");
 
     // Wait for Navigation to Finish
     await page.waitForNavigation();
