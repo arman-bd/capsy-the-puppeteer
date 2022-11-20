@@ -86,6 +86,12 @@ The project uses Puppeteer to load the page and solve the reCaptcha. The followi
 11. Extracts the tracking information.
 12. Returns the tracking information via the API.
 
+### Capsy in Action
+
+<img src="screenshot.png" width="100%" />
+
+**Note:** Some of the information is hidden in the screenshot for privacy reasons. Please keep in mind that this is a demo project and should not be used in production & it's for educational purposes only.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
