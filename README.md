@@ -69,6 +69,23 @@ The application currently has the following API(s):
 - `GET /task/screenshot?url={url}`: Returns a screenshot of the given URL.
 - `GET /track/caru?id={id}`: Returns the tracking information for the given Caru Container ID.
 
+### How it works
+
+The project uses Puppeteer to load the page and solve the reCaptcha. The following steps are performed for Caru Container Tracking API:
+
+1. The page is loaded using Puppeteer.
+2. Waits for the page to load.
+3. Checks if the reCaptcha is present.
+4. Asks 2Captcha to solve the reCaptcha.
+5. Places the solution in the reCaptcha field.
+6. Clicks the "Continue" button.
+7. Waits for the next page to load.
+8. Places the Container ID in the field.
+9. Submits the form.
+10. Waits for the page to load.
+11. Extracts the tracking information.
+12. Returns the tracking information via the API.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -77,7 +94,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This project is for educational purposes only. It is not intended to be used for any production purposes. The author is not responsible for any misuse or damage caused by this project. Use it at your own risk.
 
-## Acknowledgments
+## References
 
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
