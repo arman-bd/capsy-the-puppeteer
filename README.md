@@ -1,10 +1,12 @@
-# capsy-the-puppeteer
+# Capsy the Puppeteer
 
-Capsy the Puppeteer is a simple project to demonstrate how to use Puppeteer to extract data from a website that is protected by a reCAPTCHA. It uses a headless browser provided by Puppeteer to load the page. To solve the reCAPTCHA, it uses a service called 2Captcha. The service provides an API that can be used to solve the reCAPTCHA.
+<img src="capsy.png" width="100%" />
+
+This is a simple project to demonstrate how to use [Puppeteer](https://pptr.dev/) to extract data from a website that is protected by reCaptcha. It uses a headless browser provided by Puppeteer to load the page. To solve the reCaptcha, it uses a service called [2Captcha](https://2captcha.com/). The service provides an API that can be used to solve the reCaptcha.
 
 ## Requirements
 
-Capsy the Puppeteer requires the following to be installed:
+The project requires the following to be installed:
 
 - [Node.js](https://nodejs.org/en/)
 - [Docker](https://www.docker.com/)
