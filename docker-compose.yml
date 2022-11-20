@@ -1,11 +1,11 @@
 services:
   # Run Express server on port 8800
-  # and expose it on port 8022
+  # and expose it on port 8800
   # (so that it can be accessed from outside)
   web:
     build: .
     ports:
-      - "8022:8800"
+      - "8800:8800"
     volumes:
       - .:/app
     command: npm run dev

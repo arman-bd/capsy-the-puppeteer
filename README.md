@@ -1,18 +1,86 @@
 # capsy-the-puppeteer
 
-**Under development**
+Capsy the Puppeteer is a simple project to demonstrate how to use Puppeteer to extract data from a website that is protected by a reCAPTCHA. It uses a headless browser provided by Puppeteer to load the page. To solve the reCAPTCHA, it uses a service called 2Captcha. The service provides an API that can be used to solve the reCAPTCHA.
 
-A project using Node, TypeScript & Puppeteer.
+## Requirements
 
-## Installation
+Capsy the Puppeteer requires the following to be installed:
+
+- [Node.js](https://nodejs.org/en/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+It also requires a [2Captcha](https://2captcha.com/) API key.
+
+### Installation
+
+After installing the requirements, clone the repository and install the dependencies:
+
 ```bash
+git clone https://github.com/arman-bd/capsy-the-puppeteer.git
+cd capsy-the-puppeteer
 npm install
 ```
 
-## Usage
+### Configuration
+
+The configuration is done in the `.env` file. The following environment variables are required:
+
+- `CAPTCHA_API_KEY`: The API key for 2Captcha
+- `CAPTCHA_API_URL`: The API URL for 2Captcha
+
+Copy the `.env.example` file to `.env` by running the following command:
+
 ```bash
-npm start
+cp .env.example .env
 ```
 
+Now, you can edit the `.env` file and fill in the values.
+
+### Running
+
+You can run the project in development mode by running the following command:
+
+```bash
+npm run dev
+```
+
+This will start the server on port 8800. You can access the API at `http://localhost:8800`.
+
+### Running using Docker Compose
+
+You can also run the project using Docker. To do so, run the following command:
+
+```bash
+docker-compose up --build -d
+```
+
+The command will build the Docker image and start the container in detached mode. 
+You can access the API at `http://localhost:8800`.
+
+### API
+
+The application currently has the following API(s):
+
+- `GET /`: Returns a simple message to indicate that the API is working.
+- `GET /ping`: Returns a ping response with Timestamp.
+- `GET /task/screenshot?url={url}`: Returns a screenshot of the given URL.
+- `GET /track/caru?id={id}`: Returns the tracking information for the given Caru Container ID.
+
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+This project is for educational purposes only. It is not intended to be used for any production purposes. The author is not responsible for any misuse or damage caused by this project. Use it at your own risk.
+
+## Acknowledgments
+
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Puppeteer](https://pptr.dev/)
+- [2Captcha](https://2captcha.com/)

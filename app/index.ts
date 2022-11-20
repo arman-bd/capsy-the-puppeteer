@@ -7,6 +7,11 @@ import TrackerRouter from "./routers/tracker";
 const app = express();
 const port = 8800;
 
+// Home
+app.get("/", (req: Request, res: Response) => {
+  res.send("Capsy the Puppeteer!");
+});
+
 // Ping
 app.get("/ping", (req: Request, res: Response, next: NextFunction) => {
   res.send("PONG at " + new Date());
