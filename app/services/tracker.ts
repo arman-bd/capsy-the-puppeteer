@@ -27,11 +27,8 @@ export default class TrackerService {
     // Launch Puppeteer
     const browser = await puppeteer.launch(
       {
-        headless: false,
-        executablePath: executablePath(),
-        args: [
-          '--start-maximized',
-        ]
+        headless: true,
+        executablePath: executablePath()
       }
     );
 
