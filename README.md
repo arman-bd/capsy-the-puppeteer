@@ -1,6 +1,6 @@
 # Capsy the Puppeteer
 
-<img src="capsy.png" width="100%" />
+<img src="res/capsy.png" width="100%" />
 
 This is a simple project to demonstrate how to use [Puppeteer](https://pptr.dev/) to extract data from a website that is protected by reCaptcha. It uses a headless browser provided by Puppeteer to load the page. To solve the reCaptcha, it uses a service called [2Captcha](https://2captcha.com/). The service provides an API that can be used to solve the reCaptcha.
 
@@ -88,9 +88,13 @@ The project uses Puppeteer to load the page and solve the reCaptcha. The followi
 
 ### Capsy in Action
 
-<img src="screenshot.png" width="100%" />
+<img src="res/capsy-in-action.gif" width="100%" />
 
-**Note:** Some of the information is hidden in the screenshot for privacy reasons. Please keep in mind that this is a demo project and should not be used in production & it's for educational purposes only.
+**API Output**
+
+<img src="res/api-screenshot.png" width="100%" />
+
+**Note:** Some of the information is hidden in the screenshot for privacy reasons.
 
 ## License
 

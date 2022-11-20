@@ -27,13 +27,17 @@ export default class TrackerService {
     // Launch Puppeteer
     const browser = await puppeteer.launch(
       {
-        headless: true,
+        headless: false,
         executablePath: executablePath(),
+        args: [
+          '--start-maximized',
+        ]
       }
     );
 
     // Open New Page
     const page = await browser.newPage();
+    page.setViewport({width: 1920, height: 1080});
     page.setDefaultNavigationTimeout(0); // Disable Timeout
 
     // Go to Caru
