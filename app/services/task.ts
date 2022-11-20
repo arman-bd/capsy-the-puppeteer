@@ -1,26 +1,30 @@
-import puppeteer from 'puppeteer';
+import puppeteer from "puppeteer";
 
 export default class TaskService {
-    public async screenshot(url: string, wait_second: number = 5) {
-        // Launch Puppeteer
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto(url);
-        
-        // Wait for wait_second seconds
-        await this.sleep(wait_second);
+  /**
+   * Take a screenshot of a website
+   * @param url : string | null - URL to take screenshot of
+   * @returns screenshot : string | Buffer | null - Screenshot of URL
+   * @example
+   * const screenshot = await this.screenshot("https://google.com");
+   * @see https://pptr.dev/#?product=Puppeteer&version=v5.5.0&show=api-pagescreenshotoptions
+   */
+  public async screenshot(url: string): Promise<string | Buffer> {
+    // Launch Puppeteer
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(url);
 
-        // Take Screenshot
-        const screenshot = await page.screenshot({ fullPage: true });
+    // Wait for Page to Finish Loading
+    await page.waitForNavigation();
 
-        // Close Browser
-        await browser.close();
+    // Take Screenshot
+    const screenshot = await page.screenshot({ fullPage: true });
 
-        // Return Screenshot
-        return screenshot;
-    }
+    // Close Browser
+    await browser.close();
 
-    public async sleep(second: number) {
-        return new Promise(resolve => setTimeout(resolve, second * 1000));
-    }
+    // Return Screenshot
+    return screenshot;
+  }
 }
