@@ -88,9 +88,20 @@ The project uses Puppeteer to load the page and solve the reCaptcha. The followi
 
 ### Capsy in Action
 
+Normally the Puppeteer would run in headless mode. However, for demonstration purposes, the Puppeteer is run in non-headless mode. This allows you to see the browser in action. The following video shows the project in action:
+
 <img src="res/capsy-in-action.gif" width="100%" />
 
+The video shows the following:
+
+1. The API is called to get the tracking information for the given Caru Container ID.
+2. The Puppeteer loads the page.
+3. The reCaptcha is solved.
+4. The tracking information is extracted.
+
 **API Output**
+
+After extracting the tracking information, the API returns the output to the original requester.
 
 <img src="res/api-screenshot.png" width="100%" />
 
