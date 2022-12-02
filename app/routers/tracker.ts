@@ -6,11 +6,17 @@ const TrackerRouter: Router = Router();
 import TrackerController from "../controllers/tracker";
 const trackerController = new TrackerController();
 
-// Routes
+// CARU
 TrackerRouter.get(
   "/caru",
   trackerController.track_caru.bind(trackerController)
 );
+
+// MAERSK
+TrackerRouter.get(
+  "/evergreen",
+  trackerController.track_evergreen.bind(trackerController)
+)
 
 // Export
 export default TrackerRouter;
