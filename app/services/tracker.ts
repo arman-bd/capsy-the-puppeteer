@@ -88,20 +88,34 @@ export default class TrackerService {
    */
    public async track_evergreen(id: string): Promise<string> {
 
+    // Get Proxy Configuration
+    // const proxy = process.env.OXYLAB_PROXY;
+
     // Launch Puppeteer
     const browser = await puppeteer.launch(
       {
         headless: false,
-        executablePath: executablePath()
+        executablePath: executablePath(),
+        // args: ['--proxy-server=' + proxy]
       }
     );
 
     // Open New Page
     const page = await browser.newPage();
+    
+    // Pass Authentication
+    // await page.authenticate({
+    //   username: process.env.OXYLAB_USERNAME,
+    //   password: process.env.OXYLAB_PASSWORD
+    // });
+
     page.setViewport({width: 1920, height: 1080});
     page.setDefaultNavigationTimeout(0); // Disable Timeout
 
-    // Go to Caru
+    //await page.goto('https://ip.oxylabs.io');
+    //this.sleep(3000);
+
+    // Go to Evergreen
     await page.goto(
       "https://ct.shipmentlink.com/servlet/TDB1_CargoTracking.do"
     );
@@ -131,6 +145,55 @@ export default class TrackerService {
     await browser.close();
 
     // Return HTML
+    return html;
+  }
+
+  public async track_oocl(id: string): Promise<string> {
+
+    var html = "";
+
+    // Launch Puppeteer
+    const browser = await puppeteer.launch(
+      {
+        headless: false,
+        executablePath: executablePath(),
+        // args: ['--proxy-server=' + proxy]
+      }
+    );
+
+    // Open New Page
+    const page = await browser.newPage();
+
+    // Open First Page
+    await page.goto("https://www.oocl.com/eng/Pages/default.aspx");
+
+    // Wait for Page to Load
+    page.waitForSelector("#selectorDiv > div > div > ul > li.selected > a");
+
+    // Select Tracking Type
+    await page.click("#selectorDiv > div > div > ul > li.selected > a");
+
+    // Type Container Number
+    await page.type("#SEARCH_NUMBER", id);
+
+    // Click Search
+    await page.click("#container_btn");
+
+    // Wait for 1 Second
+    await this.sleep(1000);
+
+    // Get Newly Opened Page
+    const pages = await browser.pages();
+    const newPage = pages[pages.length - 1];
+
+    // Wait for Page to Load
+    await newPage.waitForSelector("body");
+
+    await this.sleep(10000);
+
+    // Get HTML
+    html = await newPage.$eval("body", (e) => e.innerHTML);
+    
     return html;
   }
 

@@ -18,5 +18,11 @@ TrackerRouter.get(
   trackerController.track_evergreen.bind(trackerController)
 )
 
+// OOCL
+TrackerRouter.get(
+  "/oocl",
+  trackerController.track_oocl.bind(trackerController)
+);
+
 // Export
 export default TrackerRouter;
