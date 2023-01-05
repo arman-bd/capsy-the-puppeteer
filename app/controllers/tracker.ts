@@ -86,7 +86,6 @@ export default class TrackerController {
       } else {
         res.send(html);
       }
-      // Test
     } catch (e) {
       console.log(e);
       res.send(e);
