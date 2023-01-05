@@ -91,5 +91,4 @@ export default class TrackerController {
       res.send(e);
     }
   }
-  
 }
